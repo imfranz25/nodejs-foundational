@@ -1,12 +1,14 @@
+require('dotenv').config();
 const express = require('express');
-
-const config = require('./utils/config');
+const cors = require('cors');
+const config = require('./config/global.config');
 
 /* Initialization */
 const app = express();
 
 /* Server Config */
 app.use(express.json());
+app.use(cors());
 
 app.get('/', (_, res) => {
   res.send('Welcome to Express API ~');
