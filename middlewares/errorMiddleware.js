@@ -1,6 +1,6 @@
-const logger = require('../config/winston.config');
+const logger = require('../configs/winston.config');
 
-const handleError = (err, req, res) => {
+const handleError = (err, req, res, _next) => {
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
 
   res.status(statusCode);
