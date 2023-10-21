@@ -1,7 +1,10 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const config = require('./config/global.config');
+const globalConfig = require('./configs/global.config');
+const useRoutes = require('./routes/index');
+const scheduleSensor = require('./utils/scheduleSensor');
+const connectDB = require('./configs/database.config');
 
 /* Initialization */
 const app = express();
@@ -10,11 +13,16 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (_, res) => {
-  res.send('Welcome to Express API ~');
-});
+/* Initialize database connection */
+connectDB();
+
+/* Route configuration */
+useRoutes(app);
+
+/* Cron jobs */
+scheduleSensor();
 
 /* Start Express Server */
-app.listen(config.PORT, () => {
-  console.log(`Server is running on port ${config.PORT}`);
+app.listen(globalConfig.PORT, () => {
+  console.log(`Server is running on port ${globalConfig.PORT}`);
 });

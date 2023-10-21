@@ -1,5 +1,6 @@
 # Directories
 node_modules
+logs
 
 # Ignore all env files except env example
 .env*
