@@ -5,6 +5,7 @@ const globalConfig = require('./configs/global.config');
 const useRoutes = require('./routes/index');
 const scheduleSensor = require('./utils/scheduleSensor');
 const connectDB = require('./configs/database.config');
+const sendMail = require('./utils/sendMail');
 
 /* Initialization */
 const app = express();
@@ -21,6 +22,16 @@ useRoutes(app);
 
 /* Cron jobs */
 scheduleSensor();
+
+try {
+  sendMail({
+    subject: 'test',
+    html: `<h1>Test</h1>`,
+    recipients: ['francis.ong25@gmail.com'],
+  });
+} catch (error) {
+  console.log(error);
+}
 
 /* Start Express Server */
 app.listen(globalConfig.PORT, () => {
