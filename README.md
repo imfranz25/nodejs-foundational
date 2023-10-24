@@ -135,6 +135,42 @@ Response
 }
 ```
 
+#### @GET /sensor
+
+```
+http://localhost:3000/sensor
+```
+
+Response
+
+```
+{
+  "message": "Sensors fetched",
+  "sensor": [
+    {
+      "_id": "6537711044ccaeb65d65302f",
+      "location": "Location 2",
+      "temperature_celsius": 20.64686720588577,
+      "humidity_percent": 53,
+      "pressure_hpa": 975,
+      "createdAt": "2023-10-24T07:24:00.955Z",
+      "updatedAt": "2023-10-24T07:24:00.955Z",
+      "__v": 0
+    },
+    {
+      "_id": "6537714c44ccaeb65d653031",
+      "location": "Location 1",
+      "temperature_celsius": 25.794430454886733,
+      "humidity_percent": 99,
+      "pressure_hpa": 1012,
+      "createdAt": "2023-10-24T07:25:00.571Z",
+      "updatedAt": "2023-10-24T07:25:00.571Z",
+      "__v": 0
+    },
+  ]
+}
+```
+
 #### @POST /sensor/create
 
 ```
@@ -167,42 +203,6 @@ Response
     "updatedAt": "2023-10-24T07:29:59.355Z",
     "__v": 0
   }
-}
-```
-
-#### @GET /sensor
-
-```
-http://localhost:3000/sensor
-```
-
-Request Body (JSON)
-
-```
-{
-  "message": "Sensors fetched",
-  "sensor": [
-    {
-      "_id": "6537711044ccaeb65d65302f",
-      "location": "Location 2",
-      "temperature_celsius": 20.64686720588577,
-      "humidity_percent": 53,
-      "pressure_hpa": 975,
-      "createdAt": "2023-10-24T07:24:00.955Z",
-      "updatedAt": "2023-10-24T07:24:00.955Z",
-      "__v": 0
-    },
-    {
-      "_id": "6537714c44ccaeb65d653031",
-      "location": "Location 1",
-      "temperature_celsius": 25.794430454886733,
-      "humidity_percent": 99,
-      "pressure_hpa": 1012,
-      "createdAt": "2023-10-24T07:25:00.571Z",
-      "updatedAt": "2023-10-24T07:25:00.571Z",
-      "__v": 0
-    },
-  ]
 }
 ```
 
