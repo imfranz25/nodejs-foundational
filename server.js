@@ -23,16 +23,6 @@ useRoutes(app);
 /* Cron jobs */
 scheduleSensor();
 
-try {
-  sendMail({
-    subject: 'test',
-    html: `<h1>Test</h1>`,
-    recipients: ['francis.ong25@gmail.com'],
-  });
-} catch (error) {
-  console.log(error);
-}
-
 /* Start Express Server */
 app.listen(globalConfig.PORT, () => {
   console.log(`Server is running on port ${globalConfig.PORT}`);

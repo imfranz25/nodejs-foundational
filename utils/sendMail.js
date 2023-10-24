@@ -1,6 +1,7 @@
 const nodeMailer = require('nodemailer');
 const { google } = require('googleapis');
 const globalConfig = require('../configs/global.config');
+const logger = require('../configs/winston.config');
 
 /**
  * Google OAuth 2 initialization
@@ -45,20 +46,20 @@ const generateTransport = async () => {
  * Send an email using gmail api w/ nodemailer
  * @param {string} subject
  * @param {string} html
- * @param {string[]} recipients=[]}
+ * @param {string[]} recipients=[]
  * @returns {void}
  */
 const sendMail = async ({ subject, html, recipients = [] }) => {
   const transporter = await generateTransport();
 
-  await transporter.sendMail({
+  const emailDetails = await transporter.sendMail({
     from: `Module 2 Mini Project <${globalConfig.EMAIL_USERNAME}>`,
     to: recipients,
     subject,
     html,
   });
 
-  console.log('Email sent');
+  logger.info(JSON.stringify(emailDetails, null, 2));
 };
 
 module.exports = sendMail;
