@@ -10,7 +10,7 @@ const scheduleSensor = () => {
   cron.schedule('*/1 * * * *', async () => {
     logger.info('Generating simulated sensor data...');
 
-    const newSensorData = generateSensorData();
+    const newSensorData = generateSensorData({});
 
     try {
       await newSensorData.save();
